@@ -5,7 +5,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Ecomplete\Phonenumber\Helper;
+namespace Maneza\Phonenumber\Helper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Session as CustomerSession;

@@ -2,7 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 	<body>
 		<referenceContainer name="form.additional.info">
-			<block class="Magento\Framework\View\Element\Template" name="phone_number_block" template="Ecomplete_Phonenumber::form/register.phtml"/>
+			<block class="Magento\Framework\View\Element\Template" name="phone_number_block" template="Maneza_Phonenumber::form/register.phtml"/>
 		</referenceContainer>
 	</body>
 </page>

@@ -12,7 +12,7 @@
         <!-- Set Custom Template for info -->
         <referenceBlock name="customer_account_dashboard_info" >
             <action method="setTemplate"  >
-                <argument   name="template" xsi:type="string">Ecomplete_Phonenumber::account/dashboard/infonumber.phtml</argument>
+                <argument   name="template" xsi:type="string">Maneza_Phonenumber::account/dashboard/infonumber.phtml</argument>
             </action>
         </referenceBlock>
         <!-- End -->

@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Ecomplete\Phonenumber\Setup\Patch\Data;
+namespace Maneza\Phonenumber\Setup\Patch\Data;
 
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetup;

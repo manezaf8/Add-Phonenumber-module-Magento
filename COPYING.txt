@@ -1,8 +1,8 @@
-Copyright © 2021-present Ecomplete
+Copyright © 2021-present Maneza
 
-This file is part of Ecomplete/Phonenumber.
+This file is part of Maneza/Phonenumber.
 
-Ecomplete/Phonenumber is free software: you can redistribute it and/or modify
+Maneza/Phonenumber is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.

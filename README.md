@@ -1,6 +1,6 @@
-# Module Ecomplete Phonenumber
+# Module Maneza Phonenumber
 
-    ``ecomplete/module-phonenumber``
+    ``maneza/module-phonenumber``
 
  - [Main Functionalities](#markdown-header-main-functionalities)
  - [Installation](#markdown-header-installation)
@@ -24,8 +24,8 @@
 
 ### Type 1: Zip file
 
- - Unzip the zip file in `app/code/Ecomplete`
- - Enable the module by running `php bin/magento module:enable Ecomplete_Phonenumber`
+ - Unzip the zip file in `app/code/Maneza`
+ - Enable the module by running `php bin/magento module:enable Maneza_Phonenumber`
  - Apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
 
@@ -36,8 +36,8 @@
     - public repository `packagist.org`
     - public github repository as vcs
  - Add the composer repository to the configuration by running `composer config repositories.repo.magento.com composer https://repo.magento.com/`
- - Install the module composer by running `composer require ecomplete/module-phonenumber`
- - enable the module by running `php bin/magento module:enable Ecomplete_Phonenumber`
+ - Install the module composer by running `composer require maneza/module-phonenumber`
+ - enable the module by running `php bin/magento module:enable Maneza_Phonenumber`
  - apply database updates by running `php bin/magento setup:upgrade`\*
  - Flush the cache by running `php bin/magento cache:flush`
 
