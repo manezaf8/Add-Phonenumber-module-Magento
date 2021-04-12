@@ -1,0 +1,23 @@
+{
+    "name": "ecomplete/module-phonenumber",
+    "description": "Adding a contact number field to a customer reg form.",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Ntabethemba Mabetshe",
+            "email": "bmaneza@gmail.com",
+            "role": "Backend Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ecomplete\\Phonenumber\\": ""
+        }
+    }
+}

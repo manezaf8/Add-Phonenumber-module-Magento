@@ -1,0 +1,14 @@
+<?php
+$customFieldLabel = __("Phone Number");
+$customField = "contact_number";
+?>
+<div class="field <?= $customField ?> required">
+    <label class="label" for="<?= $customField ?>">
+        <span><?= $block->escapeHtml($customFieldLabel) ?></span>
+    </label>
+    <div class="control">
+        <input type="text" name="<?= $customField ?>" id="<?= $customField ?>" value=""
+               title="<?= $block->escapeHtmlAttr($customFieldLabel) ?>"
+               class="input-text" data-validate="{required:true}">
+    </div>
+</div>
