@@ -4,7 +4,7 @@
         <!-- Set Custom Template for Register form -->
         <referenceBlock name="customer_edit">
             <action method="setTemplate">
-                <argument  name="template" xsi:type="string">Ecomplete_Phonenumber::form/edit.phtml</argument>
+                <argument  name="template" xsi:type="string">Maneza_Phonenumber::form/edit.phtml</argument>
             </action>
         </referenceBlock>
         <!-- End -->

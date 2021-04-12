@@ -1,5 +1,5 @@
 {
-    "name": "ecomplete/module-phonenumber",
+    "name": "maneza/module-phonenumber",
     "description": "Adding a contact number field to a customer reg form.",
     "type": "magento2-module",
     "license": "GPL-3.0",
@@ -17,7 +17,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Ecomplete\\Phonenumber\\": ""
+            "Maneza\\Phonenumber\\": ""
         }
     }
 }

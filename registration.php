@@ -5,5 +5,5 @@
  */
 use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Ecomplete_Phonenumber', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Maneza_Phonenumber', __DIR__);
 
