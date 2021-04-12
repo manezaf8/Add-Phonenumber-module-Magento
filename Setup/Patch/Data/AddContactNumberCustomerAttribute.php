@@ -1,49 +1,50 @@
 <?php
 /**
- * Copyright © maneza f8 All rights reserved.
+ * Copyright © ecomplete  All rights reserved.
  * See COPYING.txt for license details.
  */
-declare(strict_types=1);
 
-namespace Maneza\Phonenumber\Setup\Patch\Data;
+
+namespace Ecomplete\Phonenumber\Setup\Patch\Data;
 
 use Magento\Customer\Model\Customer;
-use Magento\Customer\Setup\CustomerSetup;
 use Magento\Customer\Setup\CustomerSetupFactory;
-use Magento\Eav\Model\Entity\Attribute\Set;
-use Magento\Eav\Model\Entity\Attribute\SetFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Magento\Framework\Setup\Patch\PatchRevertableInterface;
+use Magento\Eav\Model\Entity\Attribute\SetFactory as AttributeSetFactory;
 
-class AddContactNumberCustomerAttribute implements DataPatchInterface, PatchRevertableInterface
+/**
+ * Class AddCustomerPhoneNumberAttribute
+ * @package Ecomplete\Phonenumber\Setup\Patch\Data
+ */
+class AddContactNumberCustomerAttribute implements DataPatchInterface
 {
-
     /**
      * @var ModuleDataSetupInterface
      */
-    private $moduleDataSetup;
-    /**
-     * @var CustomerSetup
-     */
-    private $customerSetupFactory;
-    /**
-     * @var SetFactory
-     */
-    private $attributeSetFactory;
+    protected $moduleDataSetup;
 
     /**
-     * Constructor
-     *
+     * @var CustomerSetupFactory
+     */
+    protected $customerSetupFactory;
+
+    /**
+     * @var AttributeSetFactory
+     */
+    protected $attributeSetFactory;
+
+    /**
+     * AddCustomerPhoneNumberAttribute constructor.
      * @param ModuleDataSetupInterface $moduleDataSetup
      * @param CustomerSetupFactory $customerSetupFactory
-     * @param SetFactory $attributeSetFactory
+     * @param AttributeSetFactory $attributeSetFactory
      */
     public function __construct(
         ModuleDataSetupInterface $moduleDataSetup,
         CustomerSetupFactory $customerSetupFactory,
-        SetFactory $attributeSetFactory
-    ) {
+        AttributeSetFactory $attributeSetFactory
+    ){
         $this->moduleDataSetup = $moduleDataSetup;
         $this->customerSetupFactory = $customerSetupFactory;
         $this->attributeSetFactory = $attributeSetFactory;
@@ -54,27 +55,28 @@ class AddContactNumberCustomerAttribute implements DataPatchInterface, PatchReve
      */
     public function apply()
     {
-        $this->moduleDataSetup->getConnection()->startSetup();
-        /** @var CustomerSetup $customerSetup */
         $customerSetup = $this->customerSetupFactory->create(['setup' => $this->moduleDataSetup]);
+
         $customerEntity = $customerSetup->getEavConfig()->getEntityType(Customer::ENTITY);
         $attributeSetId = $customerEntity->getDefaultAttributeSetId();
-        
-        /** @var $attributeSet Set */
+
         $attributeSet = $this->attributeSetFactory->create();
         $attributeGroupId = $attributeSet->getDefaultGroupId($attributeSetId);
-        
+
         $customerSetup->addAttribute(
             Customer::ENTITY,
             'contact_number',
             [
+                'type' => 'varchar',
                 'label' => 'Phone Number',
                 'input' => 'text',
-                'type' => 'varchar',
-                'source' => '',
-                'required' => true,
-                'position' => 333,
+                'validate_rules' => '{"max_text_length":255,"min_text_length":1}',
+                'required' => false,
+                'sort_order' => 120,
+                'position' => 120,
                 'visible' => true,
+                'user_defined' => true,
+                'unique' => false,
                 'system' => false,
                 'is_used_in_grid' => true,
                 'is_visible_in_grid' => true,
@@ -83,34 +85,34 @@ class AddContactNumberCustomerAttribute implements DataPatchInterface, PatchReve
                 'backend' => ''
             ]
         );
-        
-        $attribute = $customerSetup->getEavConfig()->getAttribute(Customer::ENTITY, '');
-        $attribute->addData([
-            'used_in_forms' => [
-                'adminhtml_customer',
-                'adminhtml_checkout',
-                'customer_account_create',
-                'customer_account_edit'
-            ]
-        ]);
-        $attribute->addData([
-            'attribute_set_id' => $attributeSetId,
-            'attribute_group_id' => $attributeGroupId
-        
-        ]);
-        $attribute->save();
 
-        $this->moduleDataSetup->getConnection()->endSetup();
+        $attribute = $customerSetup->getEavConfig()->getAttribute(
+            Customer::ENTITY,
+            'contact_number'
+        );
+
+        $attribute->addData(
+            [
+                'attribute_set_id' => $attributeSetId,
+                'attribute_group_id' => $attributeGroupId,
+                'used_in_forms' => [
+                    'adminhtml_customer',
+                    'adminhtml_checkout',
+                    'customer_account_create',
+                    'customer_account_edit'
+                ],
+            ]
+        );
+
+        $attribute->save();
     }
 
-    public function revert()
+    /**
+     * {@inheritdoc}
+     */
+    public static function getDependencies()
     {
-        $this->moduleDataSetup->getConnection()->startSetup();
-        /** @var CustomerSetup $customerSetup */
-        $customerSetup = $this->customerSetupFactory->create(['setup' => $this->moduleDataSetup]);
-        $customerSetup->removeAttribute(\Magento\Customer\Model\Customer::ENTITY, 'contact_number');
-
-        $this->moduleDataSetup->getConnection()->endSetup();
+        return [];
     }
 
     /**
@@ -120,15 +122,4 @@ class AddContactNumberCustomerAttribute implements DataPatchInterface, PatchReve
     {
         return [];
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function getDependencies()
-    {
-        return [
-        
-        ];
-    }
 }
-

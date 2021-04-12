@@ -9,7 +9,7 @@
 
 <?php
     // added for the phone number field 
-        $dataHelper = $this->helper('Maneza\Phonenumber\Helper\Data');
+        $dataHelper = $this->helper('Ecomplete\Phonenumber\Helper\Data');
         //echo $dataHelper->getContactNumber();
 ?>
 <div class="block block-dashboard-info">
@@ -24,7 +24,9 @@
                     <?= $block->escapeHtml($block->getName()) ?><br>
                     <?= $block->escapeHtml($block->getCustomer()->getEmail()) ?><br>
                     <!-- the phone number input  -->
+                    <a href="tel:<?= $block->escapeHtml( $dataHelper->getContactNumber()) ?>" >
                     <?= $block->escapeHtml( $dataHelper->getContactNumber()) ?>
+                    </a>
                 </p>
                 <?= $block->getChildHtml('customer.account.dashboard.info.extra'); ?>
             </div>
