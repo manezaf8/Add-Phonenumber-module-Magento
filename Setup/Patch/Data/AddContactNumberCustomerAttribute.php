@@ -1,11 +1,11 @@
 <?php
 /**
- * Copyright © ecomplete  All rights reserved.
+ * Copyright © maneza  All rights reserved.
  * See COPYING.txt for license details.
  */
 
 
-namespace Ecomplete\Phonenumber\Setup\Patch\Data;
+namespace Maneza\Phonenumber\Setup\Patch\Data;
 
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetupFactory;
@@ -15,7 +15,7 @@ use Magento\Eav\Model\Entity\Attribute\SetFactory as AttributeSetFactory;
 
 /**
  * Class AddCustomerPhoneNumberAttribute
- * @package Ecomplete\Phonenumber\Setup\Patch\Data
+ * @package Maneza\Phonenumber\Setup\Patch\Data
  */
 class AddContactNumberCustomerAttribute implements DataPatchInterface
 {
